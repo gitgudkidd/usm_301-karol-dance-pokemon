@@ -17,6 +17,23 @@ tinymce.init({
   });
   const pokemones = [];
   
+  const eliminarpokemon = async function(){
+    let res = await Swal.fire({
+      title: `Desea enviar al profesor oak el pokemon ${pokemones[this.nro].nombre}`,
+      showCancelButton:true,
+      confirmButtonText:"Si, enviar!"
+    })
+
+    if(res.isConfirmed){
+      pokemones.splice(this.nro,1);
+      cargarTabla()
+      Swal.fire("Pokemon enviado al profesor oak!");
+    } else {
+Swal.fire("Operacion cancelada");
+    }
+    console.log(this.nro)
+  }
+
   const cargarTabla = ()=>{
     
     //1-Obtener una referencia a la tabla
@@ -36,6 +53,10 @@ tinymce.init({
       let tdNRO = document.createElement("td");
       tdNRO.innerText = (i+1)
       let tdNombre = document.createElement("td");
+      if(p.legendario){
+        tdNombre.classList.add("text-warning");
+
+      }
       tdNombre.innerText = p.nombre;
       let tdTipo = document.createElement("td");
       
@@ -63,7 +84,15 @@ tinymce.init({
       let tdDescripcion = document.createElement("td");
       tdDescripcion.innerHTML = p.descripcion;
       let tdAcciones = document.createElement("td");
-      
+      tdAcciones.classList.add("text-center");
+      //Agregar un boton al td de acciones
+      let boton = document.createElement("button");//crear elementos
+      boton.classList.add("btn","btn-danger");//cambiar clases de los elementos
+      boton.innerText = "Enviar al profeson oak";//cambiar texto de un elemento
+      boton.nro = i;
+      boton.addEventListener("click",eliminarpokemon);
+      tdAcciones.appendChild(boton); // agregar un elemento dentro de otro
+
       //5-Agregar las celdas al tr
       tr.appendChild(tdNRO);
       tr.appendChild(tdNombre);
@@ -101,3 +130,12 @@ document.querySelector("#registrar-btn").addEventListener("click", () =>{
 
     
 } );
+
+//limpiar
+document.querySelector("#limpiar-btn").addEventListener("click",()=>{
+  document.querySelector("#nombre-txt").value="";
+  //document.querySelector(#descripcion_txt).value="";
+  tinymce.get("descripcion-txt").setContent("");
+  document.querySelector("#Legendario-no").checked=true;
+  document.querySelector("#tipo-select").value = "planta";
+});
