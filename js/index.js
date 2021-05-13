@@ -1,4 +1,4 @@
-
+//javascript manipula el DOM que es la interpretacion del navegador de manera local
 
 tinymce.init({
     selector: '#descripcion-txt',
@@ -131,7 +131,9 @@ document.querySelector("#registrar-btn").addEventListener("click", () =>{
     
 } );
 
-//limpiar
+/*limpiar/el listener recibe/escucha un evento
+el querySelector sirve para encontrar un elemento*/
+
 document.querySelector("#limpiar-btn").addEventListener("click",()=>{
   document.querySelector("#nombre-txt").value="";
   //document.querySelector(#descripcion_txt).value="";

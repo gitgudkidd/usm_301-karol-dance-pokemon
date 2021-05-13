@@ -1,3 +1,5 @@
+<!-- La base la saco de bootstrap/get started/ starter template
+en la pagina de bootstrap se pueden sacar muchas cosas-->
 <!doctype html>
 <html lang="en">
   <head>
@@ -14,38 +16,67 @@
   <body>
     <!--icono baño en la ezquina-->
     <i class="fas fa-bath"></i>
+        <!-- bg-danger da color rojo/ bg-gradient cambia la tonalidad/
+        bg = background color(?)/text-warning da color amarillo al texto/
+        text-center centra el texto/container-fluid es para que el header sea del tamaño
+        del 100% de la pagina/-->
       <header class="bg-danger bg-gradient text-warning text-center container-fluid" >
-          <div class="row">
-              <div class="col-12 col-md-6 col-lg-3">
-                    <img src="img/logo.png" class="image-fluid" alt="Logo">
-              </div>
-              <div class="col-12 col-md-6 col-lg-9 pt-4">
-                <h2>Gestor de Pokemones</h2>
-              </div>
-          </div>
+            <!--row es para indicar que es una fila/ debe contener si o si col-/ -->
+            <div class="row">
+                <!--col-12 toma el total de la pantalla/si suman mas de 12 col se hara un
+                salto de linea/col- es version de celular/col-md es version de table/
+                col-lg es la version de escritorio/ -->
+                <div class="col-12 col-md-6 col-lg-3">
+                        <!--el logo de pokemon/image-fluid hace la imagen responsiva/ -->
+                        <img src="img/logo.png" class="image-fluid" alt="Logo">
+                </div>
+                <!-- pt-genera espacio de arriba hacia abajo/ps- genera espacio de izquierda a derecha/
+                    pe- genera espacio de derecha a izquierda/pb- genera espacio de abajo a arriba/
+                    p- genera espacio en todas las direcciones/el valor maximo es 5/  -->
+                <div class="col-12 col-md-6 col-lg-9 pt-4">
+                    <h2>Gestor de Pokemones</h2>
+                </div>
+            </div>
       </header>
     
+      <!-- padding (p) afecta a todo lo que esta dentro del contenedor y marging (m)
+        sirve para un elemento especifico dentro del contenedor (div)-->
+
       <main class="container-fluid pt-5">
-          <!-- .row -->
+          <!-- .row genera un div con clase row -->
             <div class="row">
+                <!-- .col-12.col-md-6.col-lg-3 genera un div con esas clases-->
                 <div class="col-12 col-md-6 col-lg-3">
+                    <!-- se crea la tarjeta para registrar pokemones-->
                     <div class="card">
+                        <!-- text-light pone las letras blancas -->
                         <div class="card-header bg-warning text-light text-center">
+                            <!-- span es texto plano, solo texto, sin bg ni nada-->
                             <span>Registrar Pokemon</span>
                         </div>
                         <div class="card-body">
+                            <!-- cuadro para el nombre -->
+                            <!-- mb-3/marging sirve para separar los elementos-->
                             <div class="mb-3">
+                                <!-- label debe enlazarse con el input a traves del for/
+                                label es el texto que acompaña al input/ form-label y 
+                                form-control generan el diseño/form-contro es para ingresar texto/ -->
                                 <label class="form-label" for="nombre-txt">Nombre</label>
                                 <input class="form-control"  type="text" id="nombre-txt">
                             </div>
+                            <!-- cuadro para ingresar la descripcion -->
                             <div class="mb-3">
                                 <label class="form-label" 
                                     for="descripcion-txt">Descripcion</label>
                                 <textarea id="descripcion-txt"></textarea>
                             </div>
+                            <!-- radio button de legendario-->
                             <div class="mb-3">
                                 <label class="form-label" for="legendario-rb">Legendario</label>
                                 <div class="form-check">
+                                    <!-- si quero que los radios esten relacionados deben tener
+                                    el mismo name y diferentes id/form-check-input sirve para ingresar 
+                                    datos  -->
                                     <input type="radio"
                                         class="form-check-input" 
                                         name="legendario-rb" 
@@ -53,34 +84,40 @@
                                     <label for="form-check-label"
                                         class="form-check-label">Si</label>
                                 </div>
+                                <!-- colocando el id en el for del label se enlaza con el input-->
                                 <div class="form-check form-check-inline">
+                                    <!-- input:radio.form-check-inline#Legendario-no genera un 
+                                    input radio con esa clase e id-->
                                     <input type="radio" 
                                         name="legendario-rb" 
                                         id="Legendario-no" class="form-check-input" checked>
                                     <label for="Legendario-no" 
                                         class="form-check-label">No</label>
                                 </div>
-
                             </div>
                             <div class="mb-3">
                                 <label for="tipo-select" class="form_label">Tipo</label>
+                                <!-- cuadro con opciones/form-select le da estilo (?) -->
                                 <select id="tipo-select" class="form-select">
+                                    <!-- las opciones -->
                                     <option value="planta">Planta</option>
                                     <option value="fuego">Fuego</option>
                                     <option value="agua">Agua</option>
                                     <option value="normal">Normal</option>
                                     <option value="electrico">Electrico</option>
                                 </select>
-
                             </div>
                         </div>
                         
                         <div class="card-footer row">
+                            <!-- boton registrar -->
                             <div class="col-6">
+                                <!-- existe el boton button y el submit/ -->
                                 <button type="button" 
                                 class="btn btn-success"
                                 id="registrar-btn">Registrar</button>
                             </div>
+                            <!-- boton limpiar -->
                             <div class="col-6 text-end">
                                 <button type="button"
                                 class="btn btn-info"
@@ -89,12 +126,17 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- .col.col-md.col-mg calcula y completa el total de columnas-->
                 <div class="col col-md col-lg">
                     <div class="card">
                         <div class="card-header bg-warning text-light text-center">
-                            <span>terrible</span>
+                            <span>Pokedex</span>
                         </div>
                         <div class="card-body">
+                            <!-- table le da estilo/ table-hover es para que cuando el cursor pase
+                            sobre las filas estas se marquen/table-bordered para que tenga divison
+                            de bordes/table-striped para que se marque intercaladamente -->
                             <table class="table table-hover table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -105,6 +147,8 @@
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
+                                
+                                <!-- se genera con javascript-->
                                 <tbody id="tabla-tbody">
 
                                 </tbody>
@@ -114,10 +158,12 @@
                 </div>
 
       </main>
-
+    
+    <!-- script de bootstrap/todos los scripts deben ir al final del body -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="vendor/tinymce/js/tinymce/tinymce.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- script de java, permite el enlace entre index.html e index.js-->
     <script src="js/index.js"></script>  
 
   </body>
